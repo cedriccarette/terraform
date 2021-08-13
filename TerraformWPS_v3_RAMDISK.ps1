@@ -211,14 +211,15 @@ variable "TemplateFireboxV" {
 "@
 
 
-$filevariable | Out-File X:\Terraform\variables.tf
+$filevariable | Out-File X:\Terraform\variables.tf -Encoding utf8
+#[System.Io.File]::ReadAllText($filevariable) | Out-File -FilePath $FileName -Encoding Ascii
 $Output.Text = $filevariable
 $vercheck.IsEnabled = $true
 })
 
 $vercheck.add_Click({
 start-Process -FilePath "C:\Windows\System32\cmd.exe" -ArgumentList "/k","$temp\Terraform\version.cmd" -Verb RunAs -Wait | Out-Null
-$getversion = Get-Content $temp\Terraform\versioncheck.txt -First 1 | Out-Null
+$getversion = Get-Content $temp\Terraform\versioncheck.txt -First 1 
 Copy-Item "X:\Terraform\version.txt" "C:\terraform_log\versionCheck$(get-date -uformat %d-%m-%Y-%H.%M.%S).txt"
 $Output.Text = $getversion
 $plugin.IsEnabled = $true
@@ -234,12 +235,10 @@ if (Test-Path -Path $state) {
      $plugin.IsEnabled = $true
 } else {
     $Output.Text = "Something went wrong. Please check the log files or configuration"
-}
-
-
+        }
 })
 
-$plan.addClick({
+$plan.add_Click({
 start-Process -FilePath "C:\Windows\System32\cmd.exe" -ArgumentList "/k","$temp\Terraform\plan.cmd" -Verb RunAs -Wait | Out-Null
 Copy-Item "X:\Terraform\plan.txt" "C:\terraform_log\plan$(get-date -uformat %d-%m-%Y-%H.%M.%S).txt"
 })
