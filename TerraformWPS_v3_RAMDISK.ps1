@@ -87,13 +87,13 @@ mkdir $temp\Terraform | Out-Null
 $DownloadFiles = Invoke-WebRequest -Uri https://github.com/cedriccarette/terraform/archive/refs/heads/main.zip -Outfile $temp\Terraform\main.zip | Out-Null
 Expand-Archive -LiteralPath $temp\Terraform\main.zip -DestinationPath $temp\Terraform\ | Out-Null
 Move-Item -Path $temp\Terraform\terraform-main\* -Destination $temp\Terraform\ | Out-Null
-start-Process -FilePath "C:\Windows\System32\cmd.exe" -ArgumentList "/k","$temp\Terraform\InstallImdisk.cmd" -Verb RunAs -Wait | Out-Null
-start-Process -FilePath "C:\Windows\System32\cmd.exe" -ArgumentList "/k","$temp\Terraform\_install.cmd" -Verb RunAs -Wait | Out-Null
+echo y | start-Process -FilePath "C:\Windows\System32\cmd.exe" -ArgumentList "/k","$temp\Terraform\InstallImdisk.cmd" -Verb RunAs -Wait | Out-Null
+echo y | start-Process -FilePath "C:\Windows\System32\cmd.exe" -ArgumentList "/k","$temp\Terraform\createRAMDISK.cmd" -Verb RunAs -Wait | Out-Null
 Start-Sleep -Seconds 2
 
 $DocumentsLocation = X:
 mkdir $DocumentsLocation\Terraform | Out-Null 
-Move-Item -Path $temp\Terraform\main.tf -Destination $DocumentsLocation\Terraform | Out-Null
+Move-Item -Path $temp\Terraform\* -Destination $DocumentsLocation\Terraform | Out-Null
 Remove-Item $temp\Terraform -Recurse | Out-Null
 
 #Sync Github + remove .zip
@@ -210,15 +210,13 @@ variable "TemplateFireboxV" {
 
 
 $filevariable | Out-File X:\Terraform\variables.tf
-#Invoke-Item $DocumentsLocation\Terraform
-#start-Process notepad++ $DocumentsLocation\Terraform\variables.tf
 $Output.Text = $filevariable
 $vercheck.IsEnabled = $true
 })
 
 $vercheck.add_Click({
 $arg = "$DocumentsLocation\Terraform\"
-$check = Start-Process c:\windows\system32\cmd.exe -ArgumentList "/c,cd,$arg"
+start-Process -FilePath "C:\Windows\System32\cmd.exe" -ArgumentList "/k","$temp\Terraform\version.cmd" -Verb RunAs -Wait | Out-Null
 $Output.Text = $check
 
 })
