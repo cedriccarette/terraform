@@ -1,3 +1,3 @@
 @ECHO off
-choco install imdisk-toolkit -Force
+choco install imdisk-toolkit -y
 exit
