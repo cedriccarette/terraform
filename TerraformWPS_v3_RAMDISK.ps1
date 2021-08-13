@@ -87,8 +87,8 @@ mkdir $temp\Terraform | Out-Null
 $DownloadFiles = Invoke-WebRequest -Uri https://github.com/cedriccarette/terraform/archive/refs/heads/main.zip -Outfile $temp\Terraform\main.zip | Out-Null
 Expand-Archive -LiteralPath $temp\Terraform\main.zip -DestinationPath $temp\Terraform\ | Out-Null
 Move-Item -Path $temp\Terraform\terraform-main\* -Destination $temp\Terraform\ | Out-Null
-echo y | start-Process -FilePath "C:\Windows\System32\cmd.exe" -ArgumentList "/k","$temp\Terraform\InstallImdisk.cmd" -Verb RunAs -Wait | Out-Null
-echo y | start-Process -FilePath "C:\Windows\System32\cmd.exe" -ArgumentList "/k","$temp\Terraform\createRAMDISK.cmd" -Verb RunAs -Wait | Out-Null
+start-Process -FilePath "C:\Windows\System32\cmd.exe" -ArgumentList "/k","$temp\Terraform\InstallImdisk.cmd" -Verb RunAs -Wait | Out-Null
+start-Process -FilePath "C:\Windows\System32\cmd.exe" -ArgumentList "/k","$temp\Terraform\createRAMDISK.cmd" -Verb RunAs -Wait | Out-Null
 Start-Sleep -Seconds 2
 
 $DocumentsLocation = X:
