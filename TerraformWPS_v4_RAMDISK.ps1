@@ -113,7 +113,7 @@ Expand-Archive -LiteralPath $DocumentsLocation\Terraform\Terraform.zip -Destinat
 Remove-Item $DocumentsLocation\Terraform\Terraform.zip | Out-Null
 Remove-Item $DocumentsLocation\Terraform\terraform-main -Recurse | Out-Null
 Remove-Item $DownloadTerraform\Terraform\main.zip | Out-Null
-$Output.Text = "Download Terraform complete" 
+$Output.Text = "Download Terraform complete `nFill in the required information" 
 })
 
 $DwnNotepad.add_click({
@@ -153,7 +153,7 @@ $generate.add_Click({
 
 $OutputOrg = $Orgname.Text
 $OutputClt = $ClientName.Text
-$OutputTusr = $TerraformUser.Text
+$OutputTusr = $TerraformUser.Text.ToLower()
 $OutputTpwd = $TerraformPass.Password
 $OutputVDC = $vdc.Text 
 
@@ -168,7 +168,7 @@ $destination_file =  'X:Terraform\variables.tf'
     } | Set-Content $destination_file
 
 #$filevariable | Out-File X:\Terraform\variables.tf -Encoding utf8
-$Output.Text = $destination_file
+#$Output.Text = Get-Content $destination_file 
 $vercheck.IsEnabled = $true
 })
 
@@ -185,11 +185,13 @@ start-Process -FilePath "C:\Windows\System32\cmd.exe" -ArgumentList "/k","$Docum
 $Output.Text = "Terraform provider plugin has been downloaded `nTerraform state file is created"
 #Check if files are created
 $state = 'X:\Terraform\terraform.tfstate'
-if (Test-Path -Path $state) {
+if (Test-Path $state) {
+    if((Get-Item $state).Length -lt 2kb) {
+    $Output.Text = "Something went wrong. Please check the log files or configuration"
+     }
+} else {
      $Output.Text =  "All good, please continue"
      $plan.IsEnabled = $true
-} else {
-    $Output.Text = "Something went wrong. Please check the log files or configuration"
         }
 })
 
