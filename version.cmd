@@ -1,4 +1,4 @@
 @echo off
-cd X:\Terraform
+cd /d X:\Terraform
 terraform.exe version > versioncheck.txt
 exit
