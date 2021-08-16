@@ -1,30 +1,30 @@
 variable "OrgName"	{
 	type = string
-	default = "orgn"
+	default = "obj1"
 	}
 variable "UserName" {
 	type = string
-	default = "tuser"
+	default = "obj2"
 	}
 variable "UserPassword" {
 	type = string
-	default = "tpwd"
+	default = "obj3"
 	}
 variable "OrgVdcName" {
 	type = string
-	default = "vdcname"
+	default = "obj4"
 	}
 variable "OrgVcdNetworkName" {
 	type = string
-	default = "OrgNet-direct-orgn"
+	default = "OrgNet-direct-obj1"
 	}
 variable "VappName" {
 	type = string
-	default = "vApp-client"
+	default = "vApp-obj5"
 	}
 variable "VappNetworkName" {
 	type = string
-	default = "vAppNet-client"
+	default = "vAppNet-obj5"
 	}
 variable "Vm1Name" {
 	type = string
