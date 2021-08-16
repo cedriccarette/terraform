@@ -1,6 +1,6 @@
 variable "OrgName"	{
 	type = string
-	default = "orgname"
+	default = "orgn"
 	}
 variable "UserName" {
 	type = string
@@ -16,7 +16,7 @@ variable "OrgVdcName" {
 	}
 variable "OrgVcdNetworkName" {
 	type = string
-	default = "OrgNet-direct-orgname"
+	default = "OrgNet-direct-orgn"
 	}
 variable "VappName" {
 	type = string
