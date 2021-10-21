@@ -16,7 +16,7 @@ variable "OrgVdcName" {
 	}
 variable "OrgVcdNetworkName" {
 	type = string
-	default = "OrgNet-direct-obj1"
+	default = "obj6"
 	}
 variable "VappName" {
 	type = string
