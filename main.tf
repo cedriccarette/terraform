@@ -50,7 +50,7 @@ resource "vcd_vapp_vm" "vm1" {
   cpu_hot_add_enabled = true
   memory_hot_add_enabled = true
   catalog_name = "Public_Catalog"
-  template_name = var.TemplateWindows2019
+  template_name = var.TemplateWindows
 #  storage_profile = var.Tier0
   memory = 4096
   cpus = 1
@@ -73,7 +73,7 @@ resource "vcd_vapp_vm" "vm2" {
   cpu_hot_add_enabled = true
   memory_hot_add_enabled = true
   catalog_name  = "Public_Catalog"
-  template_name = var.TemplateWindows2019
+  template_name = var.TemplateWindows
 #  storage_profile = var.Tier0
   memory = 6144
   cpus = 2
