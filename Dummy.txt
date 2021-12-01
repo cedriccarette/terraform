@@ -38,13 +38,9 @@ variable "Vm3Name" {
 	type = string
 	default = "FireboxV"
 	}
-variable "TemplateWindows2016" {
+variable "TemplateWindows" {
 	type = string
-	default = "Win2016 Version 1.9"
-	}
-variable "TemplateWindows2019" {
-	type = string
-	default = "Win2019 Version 1.9"
+	default = "obj8"
 	}
 variable "TemplateFireboxV" {
 	type = string
