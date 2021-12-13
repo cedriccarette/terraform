@@ -28,15 +28,15 @@ variable "VappNetworkName" {
 	}
 variable "Vm1Name" {
 	type = string
-	default = "obj7-DC"
+	default = "obj7DC"
 	}
 variable "Vm2Name" {
 	type = string
-	default = "obj7-RDS"
+	default = "obj7RDS"
 	}
 variable "Vm3Name" {
 	type = string
-	default = "FireboxV"
+	default = "obj7FireboxV"
 	}
 variable "TemplateWindows" {
 	type = string
