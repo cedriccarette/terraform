@@ -44,5 +44,5 @@ variable "TemplateWindows" {
 	}
 variable "TemplateFireboxV" {
 	type = string
-	default = "FireboxV v12.6.4U1 Template"
+	default = "FireboxV v12.5.4 Template"
 	}
